@@ -1,8 +1,7 @@
 const express = require("express");
 const app = express();
+const router = require("./routes/routes");
 
-app.get("/api", (req, res) => {
-  res.send({ check: "Api startted" });
-});
+app.use("/api", router);
 
 module.exports = app;
