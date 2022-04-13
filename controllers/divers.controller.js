@@ -3,10 +3,12 @@ exports.checking = (req, res) => {
   res.send({ check: "Api startted" });
 };
 
-exports.createDriver = (req, res) => {
+exports.createDriver = (req, res, next) => {
   console.log(req.body);
   const driverProps = req.body;
-  Driver.create(driverProps).then(driver => {
-    res.send(driver);
-  });
+  Driver.create(driverProps)
+    .then(driver => {
+      res.send(driver);
+    })
+    .catch(next);
 };
